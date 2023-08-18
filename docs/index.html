@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Phonetic Alphabet Helper</title>
+    </head>
+    <body>
+        <form>
+            <input type="text" name="text" id="text"/>
+
+            <button type="submit">
+                Submit
+            </button>
+
+            <button type="reset">
+                Reset
+            </button>
+        </form>
+
+        <div id="result"></div>
+    </body>
+
+    <script type="text/javascript">
+        const PHONETIC_ALPHABET_CHARS = {
+            a: 'Anton',
+            'ä': 'Ärger',
+            b: 'Berta',
+            c: 'Cäsar',
+            d: 'Dora',
+            e: 'Emil',
+            f: 'Friedrich',
+            g: 'Gustav',
+            h: 'Heinrich',
+            i: 'Ida',
+            j: 'Julius',
+            k: 'Kaufmann',
+            l: 'Ludwig',
+            m: 'Martha',
+            n: 'Nordpol',
+            o: 'Otto',
+            'ö': 'Ökonom',
+            p: 'Paula',
+            q: 'Quelle',
+            r: 'Richard',
+            s: 'Samuel',
+            'ß': 'Eszett',
+            t: 'Theodor',
+            u: 'Ulrich',
+            'ü': 'Übermut',
+            v: 'Viktor',
+            w: 'Wilhelm',
+            x: 'Xanthippe',
+            y: 'Ypsilon',
+            z: 'Zacharias'
+        };
+
+        document.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const {value} = document.querySelector('input[name="text"]');
+
+            const result = value.trim().split('').reduce((accum, char) => `${accum}<li>${PHONETIC_ALPHABET_CHARS[char.toLowerCase()] || char}</li>`, '');
+
+            document.querySelector('#result').innerHTML = `<ol>${result}</ol>`;
+        });
+
+        document.querySelector('form').addEventListener('reset', (event) => {
+            document.querySelector('#result').innerHTML = '';
+        });
+    </script>
+</html>
