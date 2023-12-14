@@ -6,24 +6,16 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Phonetic Alphabet Helper</title>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     </head>
     <body>
-        <form>
-            <input type="text" name="text" id="text"/>
-
-            <button type="submit">
-                Submit
-            </button>
-
-            <button type="reset">
-                Reset
-            </button>
-        </form>
-
-        <div id="result"></div>
+        <div id="app"></div>
     </body>
 
     <script type="text/javascript">
+        const {createApp, ref} = Vue;
+
         const PHONETIC_ALPHABET_CHARS = {
             a: 'Anton',
             'ä': 'Ärger',
@@ -57,18 +49,62 @@
             z: 'Zacharias'
         };
 
-        document.querySelector('form').addEventListener('submit', (event) => {
-            event.preventDefault();
+        const template = `
+            <div>
+                <form>
+                    <input
+                        ref="input"
+                        type="text"
+                    />
 
-            const {value} = document.querySelector('input[name="text"]');
+                    <button
+                        type="button"
+                        @click="handleSubmit"
+                    >
+                        Submit
+                    </button>
 
-            const result = value.trim().split('').reduce((accum, char) => `${accum}<li>${PHONETIC_ALPHABET_CHARS[char.toLowerCase()] || char}</li>`, '');
+                    <button
+                        type="button"
+                        @click="handleReset"
+                    >
+                        Reset
+                    </button>
 
-            document.querySelector('#result').innerHTML = `<ol>${result}</ol>`;
-        });
+                    <ol v-if="phonetics.length > 0">
+                        <li v-for="phonetic in phonetics">
+                            {{ phonetic }}
+                        </li>
+                    </ol>
+                </form>
+            </div>
+        `;
 
-        document.querySelector('form').addEventListener('reset', (event) => {
-            document.querySelector('#result').innerHTML = '';
-        });
+        const App = {
+            template,
+            setup() {
+                const input = ref(null);
+                const phonetics = ref([]);
+
+                return {
+                    input,
+                    phonetics,
+                };
+            },
+            methods: {
+                handleSubmit() {
+                    this.phonetics = this.input.value
+                        .trim()
+                        .split('')
+                        .map((char) => PHONETIC_ALPHABET_CHARS[char.toLowerCase()] || char)
+                },
+                handleReset() {
+                    this.input.value = '';
+                    this.phonetics = [];
+                },
+            },
+        };
+
+        createApp(App).mount('#app');
     </script>
 </html>
