@@ -7,15 +7,31 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Phonetic Alphabet Helper</title>
 
-        <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body>
-        <div id="app"></div>
+        <div x-data="phoneticAlphabet()">
+            <input type="text" x-model="input"/>
+
+            <button type="button" @click="handleSubmit">
+                Submit
+            </button>
+
+            <button type="button" @click="handleReset">
+                Reset
+            </button>
+
+            <template x-if="phonetics.length > 0">
+                <ol>
+                    <template x-for="phonetic in phonetics">
+                        <li x-text="phonetic"></li>
+                    </template>
+                </ol>
+            </template>
+        </div>
     </body>
 
     <script type="text/javascript">
-        const {createApp, ref} = Vue;
-
         const PHONETIC_ALPHABET_CHARS = {
             a: 'Anton',
             'ä': 'Ärger',
@@ -49,62 +65,21 @@
             z: 'Zacharias'
         };
 
-        const template = `
-            <div>
-                <form>
-                    <input
-                        ref="input"
-                        type="text"
-                    />
-
-                    <button
-                        type="button"
-                        @click="handleSubmit"
-                    >
-                        Submit
-                    </button>
-
-                    <button
-                        type="button"
-                        @click="handleReset"
-                    >
-                        Reset
-                    </button>
-
-                    <ol v-if="phonetics.length > 0">
-                        <li v-for="phonetic in phonetics">
-                            {{ phonetic }}
-                        </li>
-                    </ol>
-                </form>
-            </div>
-        `;
-
-        const App = {
-            template,
-            setup() {
-                const input = ref(null);
-                const phonetics = ref([]);
-
-                return {
-                    input,
-                    phonetics,
-                };
-            },
-            methods: {
+        function phoneticAlphabet() {
+            return {
+                input: null,
+                phonetics: [],
                 handleSubmit() {
-                    this.phonetics = this.input.value
+                    this.phonetics = this.input
                         .trim()
                         .split('')
                         .map((char) => PHONETIC_ALPHABET_CHARS[char.toLowerCase()] || char)
                 },
                 handleReset() {
-                    this.input.value = '';
+                    this.input = null;
                     this.phonetics = [];
                 },
-            },
-        };
-
-        createApp(App).mount('#app');
+            };
+        }
     </script>
 </html>
