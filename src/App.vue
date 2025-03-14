@@ -6,9 +6,13 @@ import NavLink from '@/components/NavLink.vue'
 <template>
   <div>
       <header>
-        <nav class="flex space-x-2 p-2 bg-zinc-100">
-          <nav-link to="/">Startseite</nav-link>
-          <nav-link to="/about">Über</nav-link>
+        <nav class="flex justify-between space-x-2 p-2 bg-zinc-100">
+          <div class="flex space-x-2">
+            <nav-link to="/">Startseite</nav-link>
+            <nav-link to="/about">Über</nav-link>
+          </div>
+
+          <nav-link to="/imprint">Impressum</nav-link>
         </nav>
       </header>
 

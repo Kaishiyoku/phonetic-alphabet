@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <router-link
-    class="relative block px-3 py-2 text-sm font-semibold hover:bg-zinc-200 rounded"
+    class="relative block px-3 py-2 text-base/6 sm:text-sm/5 font-medium hover:bg-zinc-200 rounded"
     v-slot="{isActive}"
     :to
   >
