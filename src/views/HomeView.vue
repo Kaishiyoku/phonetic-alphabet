@@ -23,7 +23,7 @@ function handleReset(): void {
 <template>
   <main>
     <form @submit.prevent="handleSubmit">
-      <form-input id="text" type="text" label="Text" v-model="text" required/>
+      <form-input id="text" type="text" label="Text" v-model="text" autofocus required/>
 
       <div class="space-x-4">
         <form-button type="submit" @click="handleSubmit">

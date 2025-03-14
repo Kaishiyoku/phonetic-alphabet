@@ -6,8 +6,10 @@ withDefaults(defineProps<{
   id: string;
   type: HtmlInputElementTypeAttribute;
   label: string;
+  autofocus?: boolean;
   required?: boolean;
 }>(), {
+  autofocus: false,
   required: false,
 });
 
@@ -28,6 +30,7 @@ const model = defineModel<string>();
       class="py-1 rounded"
       :id
       :type
+      :autofocus
       :required
     />
   </div>
