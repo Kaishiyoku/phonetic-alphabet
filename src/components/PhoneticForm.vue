@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import FormInput from '@/components/FormInput.vue'
-import FormButton from '@/components/FormButton.vue'
-import { ref } from 'vue'
-import PhoneticAlphabetChars from '@/enums/PhoneticAlphabetChars.ts'
+import FormInput from '@/components/form/FormInput.vue';
+import FormButton from '@/components/form/FormButton.vue';
+import { ref } from 'vue';
+import PhoneticAlphabetChars from '@/enums/PhoneticAlphabetChars.ts';
 
 const text = ref('')
 const phonetics = ref<string[]>([])
