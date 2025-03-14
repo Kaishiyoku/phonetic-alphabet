@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import {RouterView} from 'vue-router';
+import NavLink from '@/components/NavLink.vue'
 </script>
 
 <template>
-  <div class="p-4">
-    <!--  <header>-->
-    <!--    <div class="wrapper">-->
-    <!--      <nav>-->
-    <!--        <RouterLink to="/">Home</RouterLink>-->
-    <!--        <RouterLink to="/about">About</RouterLink>-->
-    <!--      </nav>-->
-    <!--    </div>-->
-    <!--  </header>-->
+  <div>
+      <header>
+        <nav class="flex space-x-2 p-2 bg-zinc-100">
+          <nav-link to="/">Startseite</nav-link>
+          <nav-link to="/about">Über</nav-link>
+        </nav>
+      </header>
 
-    <RouterView/>
+    <main class="p-4 border-t border-zinc-300">
+      <router-view/>
+    </main>
   </div>
 </template>
