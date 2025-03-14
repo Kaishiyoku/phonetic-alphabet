@@ -1,4 +1,4 @@
-enum PhoneticAlphabetChars {
+enum PhoneticAlphabet {
   a = 'Anton',
   ä = 'Ärger',
   b = 'Berta',
@@ -31,4 +31,4 @@ enum PhoneticAlphabetChars {
   z = 'Zacharias'
 }
 
-export default PhoneticAlphabetChars;
+export default PhoneticAlphabet;
