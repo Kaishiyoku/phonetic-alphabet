@@ -28,9 +28,9 @@ function handleReset(): void {
     <form-input id="text" type="text" label="Text" v-model="text" autofocus required />
 
     <div class="space-x-4">
-      <form-button type="submit" @click="handleSubmit"> Submit</form-button>
+      <form-button color="black" type="submit" @click="handleSubmit">Submit</form-button>
 
-      <form-button type="button" @click="handleReset"> Reset</form-button>
+      <form-button plain type="button" @click="handleReset">Reset</form-button>
     </div>
 
     <div class="pt-4 prose">

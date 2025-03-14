@@ -1,8 +1,9 @@
 <script setup lang="ts">
 
 import type {HtmlInputElementTypeAttribute} from '@/types/HtmlInputElementTypeAttribute.ts';
+import { computed } from 'vue'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   id: string;
   type: HtmlInputElementTypeAttribute;
   label: string;
@@ -14,6 +15,8 @@ withDefaults(defineProps<{
 });
 
 const model = defineModel<string>();
+
+const classes = computed(() => ({"after:content-['*'] after:pl-1 after:text-red-600": props.required}));
 </script>
 
 <template>
@@ -21,6 +24,7 @@ const model = defineModel<string>();
     <div class="pb-1">
       <label
         :for="id"
+        :class="classes"
       >
         {{ label }}
       </label>
@@ -28,7 +32,7 @@ const model = defineModel<string>();
 
     <input
       v-model="model"
-      class="py-1 rounded dark:bg-zinc-800"
+      class="py-1 border-zinc-400 focus:border-blue-600 ring-blue-600 dark:bg-zinc-800 shadow rounded"
       :id
       :type
       :autofocus
