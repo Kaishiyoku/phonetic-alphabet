@@ -26,7 +26,7 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist -e docs"
   },
   "dependencies": {
     "pinia": "^3.0.1",
