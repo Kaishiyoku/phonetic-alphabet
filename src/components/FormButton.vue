@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <button
-    class="px-2 py-1 border rounded hover:bg-zinc-100"
+    class="px-2 py-1 border rounded hover:bg-zinc-100 dark:bg-zinc-700 dark:hover:bg-zinc-600"
     :type
   >
     <slot/>

@@ -18,16 +18,17 @@ const model = defineModel<string>();
 
 <template>
   <div class="pb-4">
-    <label
-      :for="id"
-      class="block pb-1"
-    >
-      {{ label }}
-    </label>
+    <div class="pb-1">
+      <label
+        :for="id"
+      >
+        {{ label }}
+      </label>
+    </div>
 
     <input
       v-model="model"
-      class="py-1 rounded"
+      class="py-1 rounded dark:bg-zinc-800"
       :id
       :type
       :autofocus
