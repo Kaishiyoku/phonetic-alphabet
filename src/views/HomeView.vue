@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import PhoneticAlphabetChars from '@/enums/PhoneticAlphabetChars.ts';
+import FormInput from '@/components/FormInput.vue';
+import FormButton from '@/components/FormButton.vue';
 
-const input = ref('');
+const text = ref('');
 const phonetics = ref<string[]>([]);
 
 function handleSubmit(): void {
-  phonetics.value = input.value
+  phonetics.value = text.value
     .trim()
     .split('')
     .map((char) => PhoneticAlphabetChars[char.toLowerCase() as keyof typeof PhoneticAlphabetChars] || char)
 }
 
 function handleReset(): void {
-  input.value = '';
+  text.value = '';
   phonetics.value = [];
 }
 </script>
@@ -21,17 +23,19 @@ function handleReset(): void {
 <template>
   <main>
     <form @submit.prevent="handleSubmit">
-      <input type="text" v-model="input"/>
+      <form-input id="text" type="text" label="Text" v-model="text" required/>
 
-      <button type="submit" @click="handleSubmit">
-        Submit
-      </button>
+      <div class="space-x-4">
+        <form-button type="submit" @click="handleSubmit">
+          Submit
+        </form-button>
 
-      <button type="button" @click="handleReset">
-        Reset
-      </button>
+        <form-button type="button" @click="handleReset">
+          Reset
+        </form-button>
+      </div>
 
-      <div class="prose">
+      <div class="pt-4 prose">
         <ol v-if="phonetics.length > 0">
           <li v-for="(phonetic, index) in phonetics" :key="`${index}-${phonetic}`">
             {{ phonetic }}
