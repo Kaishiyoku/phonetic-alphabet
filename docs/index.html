@@ -11,23 +11,25 @@
     </head>
     <body>
         <div x-data="phoneticAlphabet()">
-            <input type="text" x-model="input"/>
+            <form @submit.prevent="handleSubmit">
+                <input type="text" x-model="input"/>
 
-            <button type="button" @click="handleSubmit">
-                Submit
-            </button>
+                <button type="button" @click="handleSubmit">
+                    Submit
+                </button>
 
-            <button type="button" @click="handleReset">
-                Reset
-            </button>
+                <button type="button" @click="handleReset">
+                    Reset
+                </button>
 
-            <template x-if="phonetics.length > 0">
-                <ol>
-                    <template x-for="phonetic in phonetics">
-                        <li x-text="phonetic"></li>
-                    </template>
-                </ol>
-            </template>
+                <template x-if="phonetics.length > 0">
+                    <ol>
+                        <template x-for="phonetic in phonetics">
+                            <li x-text="phonetic"></li>
+                        </template>
+                    </ol>
+                </template>
+            </form>
         </div>
     </body>
 
