@@ -1,6 +1,6 @@
 export default function ImprintPage() {
   return (
-    <div className="prose">
+    <div className="prose dark:prose-invert">
       <h1>Impressum</h1>
 
       <h2>Angaben gemäß § 5 TMG:</h2>

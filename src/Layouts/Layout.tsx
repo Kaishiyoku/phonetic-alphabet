@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <div>
       <header>
-        <nav className="flex justify-between space-x-2 p-2 bg-zinc-100">
+        <nav className="flex justify-between space-x-2 p-2 bg-zinc-100 dark:bg-black">
           <div className="flex space-x-2">
             <NavLink to="/">Startseite</NavLink>
             <NavLink to="/about">Über</NavLink>
@@ -15,7 +15,7 @@ export default function Layout() {
         </nav>
       </header>
 
-      <main className="p-4 border-t border-zinc-300">
+      <main className="p-4 border-t border-zinc-300 dark:border-zinc-800">
         <Outlet />
       </main>
     </div>

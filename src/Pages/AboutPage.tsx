@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div className="prose">
+    <div className="prose dark:prose-invert">
       <h1>Über</h1>
 
       <p>Dieses Tool dient dazu, einen Text per Buchstabiertafel phonetisch aufzuschlüsseln.</p>
