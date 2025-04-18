@@ -1,5 +1,5 @@
-import { NavLink as BaseNavLink, To } from 'react-router';
-import { ReactNode } from 'react';
+import { NavLink as BaseNavLink, type To } from 'react-router';
+import type { ReactNode } from 'react';
 
 export default function NavLink({
 	to,

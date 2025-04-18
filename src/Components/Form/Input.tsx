@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { HTMLInputTypeAttribute } from 'react';
+import type { HTMLInputTypeAttribute } from 'react';
 
 type InputProps = {
 	id: string;
