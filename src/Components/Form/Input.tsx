@@ -34,7 +34,7 @@ export default function Input({
 			</div>
 
 			<input
-				className="py-1 border-zinc-400 focus:border-blue-600 ring-blue-600 dark:bg-zinc-800 shadow rounded"
+				className="px-4 py-2 border-zinc-400 focus:border-indigo-500 ring-indigo-500 dark:bg-zinc-800 rounded-md"
 				id={id}
 				type={type}
 				value={value}
