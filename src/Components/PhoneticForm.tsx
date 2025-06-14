@@ -43,11 +43,11 @@ export default function PhoneticForm() {
 
 				<div className="space-x-4">
 					<Button type="button" color="black" onClick={() => handleSubmit()}>
-						Submit
+						Absenden
 					</Button>
 
 					<Button type="button" plain onClick={handleReset}>
-						Reset
+						Zurücksetzen
 					</Button>
 				</div>
 			</form>
