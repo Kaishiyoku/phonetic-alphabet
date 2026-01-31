@@ -10,7 +10,7 @@ export default function NavLink({
 		clsx(
 			'relative block text-base/6 sm:text-sm/5 font-medium rounded-md',
 			{
-				'text-white underline decoration-2 underline-offset-2 decoration-indigo-500': isActive,
+				'text-black dark:text-white underline decoration-2 underline-offset-2 decoration-indigo-500': isActive,
 				'hover:underline hover:decoration-2 hover:underline-offset-2 hover:decoration-zinc-500': !isActive,
 			},
 		);
