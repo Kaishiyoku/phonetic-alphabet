@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {ChangeEvent, useState} from 'react';
 import Input from './Form/Input.tsx';
 import Button from './Form/Button.tsx';
 import PhoneticAlphabet from '../Enums/PhoneticAlphabet.ts';
@@ -7,21 +7,21 @@ export default function PhoneticForm() {
 	const [text, setText] = useState('');
 	const [phonetics, setPhonetics] = useState<string[]>([]);
 
-	const handleSubmit = (event?: React.FormEvent<HTMLFormElement>) => {
-		event?.preventDefault();
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setText(event.target.value);
 
-		setPhonetics(() =>
-			text
-				.trim()
-				.split('')
-				.map(
-					(char) =>
-						PhoneticAlphabet[
-							char.toLowerCase() as keyof typeof PhoneticAlphabet
-						] || char,
-				),
-		);
-	};
+        setPhonetics(() =>
+            event.target.value
+                .trim()
+                .split('')
+                .map(
+                    (char) =>
+                        PhoneticAlphabet[
+                            char.toLowerCase() as keyof typeof PhoneticAlphabet
+                            ] || char,
+                ),
+        );
+    };
 
 	const handleReset = () => {
 		setText('');
@@ -30,30 +30,22 @@ export default function PhoneticForm() {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit}>
-				<Input
-					id="text"
-					type="text"
-					label="Text"
-					value={text}
-					onChange={(event) => setText(event.target.value)}
-					autofocus
-					required
-				/>
+            <Input
+                id="text"
+                type="text"
+                label="Text"
+                value={text}
+                onChange={handleChange}
+                autofocus
+                required
+            />
 
-				<div className="space-x-4">
-					<Button type="button" color="black" onClick={() => handleSubmit()}>
-						Absenden
-					</Button>
-
-					<Button type="button" plain onClick={handleReset}>
-						Zurücksetzen
-					</Button>
-				</div>
-			</form>
+            <Button type="button" plain onClick={handleReset}>
+                Zurücksetzen
+            </Button>
 
 			{phonetics.length > 0 && (
-				<div className="pt-4 prose">
+				<div className="pt-4 prose dark:prose-invert">
 					<ol>
 						{phonetics.map((phonetic, index) => (
 							<li key={`${index}-${phonetic}`}>{phonetic}</li>
