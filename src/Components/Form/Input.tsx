@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import type { HTMLInputTypeAttribute } from 'react';
+import Button from './Button.tsx';
 
 type InputProps = {
 	id: string;
@@ -8,7 +9,8 @@ type InputProps = {
 	label: string;
 	autofocus?: boolean;
 	required?: boolean;
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    clearable?: boolean;
+	onChange: (value: string) => void;
 };
 
 export default function Input({
@@ -19,6 +21,7 @@ export default function Input({
 	onChange,
 	autofocus = false,
 	required = false,
+    clearable = false,
 }: InputProps) {
 	return (
 		<div className="pb-4">
@@ -38,10 +41,24 @@ export default function Input({
 				id={id}
 				type={type}
 				value={value}
-				onChange={onChange}
+				onChange={(event) => onChange(event.target.value)}
 				autoFocus={autofocus}
 				required={required}
 			/>
+
+            {clearable && value.length > 0 && (
+                <Button
+                    type="button"
+                    aria-label="Zurücksetzen"
+                    onClick={() => onChange('')}
+                    className="absolute right-0"
+                    plain
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6" aria-hidden>
+                        <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                    </svg>
+                </Button>
+            )}
 		</div>
 	);
 }

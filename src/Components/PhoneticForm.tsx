@@ -1,17 +1,16 @@
-import {ChangeEvent, useState} from 'react';
+import {useState} from 'react';
 import Input from './Form/Input.tsx';
-import Button from './Form/Button.tsx';
 import PhoneticAlphabet from '../Enums/PhoneticAlphabet.ts';
 
 export default function PhoneticForm() {
 	const [text, setText] = useState('');
 	const [phonetics, setPhonetics] = useState<string[]>([]);
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setText(event.target.value);
+    const handleChange = (value: string) => {
+        setText(value);
 
         setPhonetics(() =>
-            event.target.value
+            value
                 .trim()
                 .split('')
                 .map(
@@ -23,26 +22,20 @@ export default function PhoneticForm() {
         );
     };
 
-	const handleReset = () => {
-		setText('');
-		setPhonetics([]);
-	};
-
 	return (
 		<div>
-            <Input
-                id="text"
-                type="text"
-                label="Text"
-                value={text}
-                onChange={handleChange}
-                autofocus
-                required
-            />
-
-            <Button type="button" plain onClick={handleReset}>
-                Zurücksetzen
-            </Button>
+            <div className="relative w-fit">
+                <Input
+                    id="text"
+                    type="text"
+                    label="Text"
+                    value={text}
+                    onChange={handleChange}
+                    autofocus
+                    required
+                    clearable
+                />
+            </div>
 
 			{phonetics.length > 0 && (
 				<div className="pt-4 prose dark:prose-invert">
