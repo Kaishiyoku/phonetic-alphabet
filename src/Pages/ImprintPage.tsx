@@ -3,8 +3,6 @@ export default function ImprintPage() {
 		<div className="prose dark:prose-invert">
 			<h1>Impressum</h1>
 
-			<h2>Angaben gemäß § 5 TMG:</h2>
-
 			<p>
 				Andreas Wiedel
 				<br />

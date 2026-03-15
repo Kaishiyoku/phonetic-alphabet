@@ -24,21 +24,21 @@ export default function PhoneticForm() {
 
 	return (
 		<div>
-            <div className="relative w-fit">
-                <Input
-                    id="text"
-                    type="text"
-                    label="Text"
-                    value={text}
-                    onChange={handleChange}
-                    autofocus
-                    required
-                    clearable
-                />
-            </div>
+      <div className="relative w-fit">
+          <Input
+              id="text"
+              type="text"
+              label="Text"
+              value={text}
+              onChange={handleChange}
+              autofocus
+              required
+              clearable
+          />
+      </div>
 
 			{phonetics.length > 0 && (
-				<div className="pt-4 prose dark:prose-invert">
+				<div className="pt-4 prose dark:prose-invert prose-li:m-0">
 					<ol>
 						{phonetics.map((phonetic, index) => (
 							<li key={`${index}-${phonetic}`}>{phonetic}</li>

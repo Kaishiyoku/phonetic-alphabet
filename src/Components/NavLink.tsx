@@ -8,10 +8,9 @@ export default function NavLink({
 }: { to: To; children: ReactNode }) {
 	const classes = ({ isActive }: { isActive: boolean }) =>
 		clsx(
-			'relative block text-base/6 sm:text-sm/5 font-medium rounded-md',
+			'link text-sm',
 			{
-				'text-black dark:text-white underline decoration-2 underline-offset-2 decoration-indigo-500': isActive,
-				'hover:underline hover:decoration-2 hover:underline-offset-2 hover:decoration-zinc-500': !isActive,
+				'decoration-2 decoration-blue-600 hover:decoration-blue-500': isActive,
 			},
 		);
 
