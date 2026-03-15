@@ -4,11 +4,8 @@ export default function AboutPage() {
 			<h1>Über</h1>
 
 			<p>
-				Dieses Tool dient dazu, einen Text per Buchstabiertafel phonetisch
-				aufzuschlüsseln.
+				Dieses Tool dient dazu, das Buchstabieren z. B. bei einem Telefonat zu erleichtern.
 			</p>
-
-			<p>Dadurch wird eine Buchstabierung z. B. über Telefon erleichtert.</p>
 
 			<p>
 				Weitere Informationen findet man auf Wikipedia:{' '}
